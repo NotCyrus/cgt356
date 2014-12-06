@@ -1,0 +1,53 @@
+-- /////////////////////////////////////////////////////////////////////
+-- This SQL Script will create 3 tables: Employee, Address, Billing
+-- Any line that starts with 2 dashes is a comment.
+-- 1) Open Query Analyzer, a program within SQL Server
+-- 2) Open this file within Query Analyzer
+-- 3) At the top of Query Analyzer, you will see a drop down box.
+--       Choose YOUR database from that drop down box.
+-- 4) Run this script by clicking the start button in Query Analyzer
+--       Hovering the mouse over the start button will give you a tool
+--       tip that says "execute query (F5)"
+--       You could also simply press F5 to execute the query.
+-- 5) When the script runs successfully, you are done with this script
+-- /////////////////////////////////////////////////////////////////////
+
+-- Create the P1User Table
+CREATE TABLE P1User(
+Login      char(15) PRIMARY KEY,
+FirstName  char(25),
+LastName   char(60),
+Passwd     char(60),
+Email      char(40),
+NewsLetter char(4)
+);
+
+-- Create the ShippingAddress Table
+CREATE TABLE ShippingAddress(
+AddressID  char(30),
+Login      char(15) REFERENCES P1User(Login),
+Name       char(50),
+Address1   char(30),
+Address2   char(30),
+City       char(30),
+State      char(20),
+Zip        char(5),
+PRIMARY KEY(AddressID, Login)
+);
+
+-- Create the BillingInfo Table
+CREATE TABLE BillingInfo(
+BillingID    char(30),
+Login        char(15) REFERENCES P1User(Login),
+BillName     char(50),
+BillAddress1 char(30),
+BillAddress2 char(30),
+BillCity     char(30),
+BillState    char(20),
+BillZip      char(5),
+CardType     char(20), 
+CardNumber   char(16),
+ExpDate      char(5),
+PRIMARY KEY(BillingID, Login)
+);
+

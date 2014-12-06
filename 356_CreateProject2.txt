@@ -1,0 +1,23 @@
+CREATE TABLE p2user(
+	Login   	varchar(20) PRIMARY KEY,
+	Passwd 		varchar(60),
+	CategoryAdmin 	varchar(20), 
+	SuperAdmin	bit
+);
+
+
+CREATE TABLE Category(
+	CatName		varchar(20) REFERENCES p2user(CategoryAdmin),
+	numImages	int,
+	PRIMARY KEY(CategoryName)
+); 
+
+
+CREATE TABLE Images(
+	CatName		varchar(20) REFERENCES Category(CategoryName),
+	FileName	varchar(40),
+	Extension	varchar(4),
+	ImgNumber	int,
+	PRIMARY KEY(FileName)
+);
+	

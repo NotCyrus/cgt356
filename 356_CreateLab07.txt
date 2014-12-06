@@ -1,0 +1,14 @@
+CREATE TABLE Users_356Lab07(
+	UserID   varchar(20) PRIMARY KEY,
+	Password varchar(50),
+	AcctType varchar(15), 
+	Name     varchar(40), 
+	Address  varchar(50), 
+	City     varchar(50), 
+	State    varchar(2),  
+	Zip      varchar(9),  
+	Phone    varchar(15), 
+	Email    varchar(100)
+);
+
+
